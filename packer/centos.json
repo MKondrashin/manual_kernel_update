@@ -10,7 +10,7 @@
       "name": "{{user `image_name`}}",
       "type": "virtualbox-iso",
       "vm_name": "packer-centos-vm",
-
+      "headless": "true",
       "boot_wait": "10s",
       "disk_size": "10240",
       "guest_os_type": "RedHat_64",
@@ -37,7 +37,8 @@
 
       "vboxmanage": [
         [  "modifyvm",  "{{.Name}}",  "--memory",  "1024" ],
-        [  "modifyvm",  "{{.Name}}",  "--cpus",  "2" ]
+        [  "modifyvm",  "{{.Name}}",  "--cpus",  "2" ],
+        [  "modifyvm",  "{{.Name}}",  "--defaultfrontend",  "headless" ]
       ],
 
       "export_opts":
@@ -53,7 +54,7 @@
 
   "post-processors": [
     {
-      "output": "centos-{{user `artifact_version`}}-kernel-5-x86_64-Minimal.box",
+      "output": "centos-{{user `artifact_version`}}-kondrashin_mv-kernel-5-x86_64-Minimal.box",
       "compression_level": "7",
       "type": "vagrant"
     }
