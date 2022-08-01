@@ -1,1 +1,6 @@
 **/*.box
+packer/packer_cache/**
+test/**
+.vagrant/**
+packer/build*
+
